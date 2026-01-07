@@ -1,0 +1,3 @@
+cd C:\Users\intel\Desktop\beads-inventory\apps\vision
+.\.venv\Scripts\Activate.ps1
+pip freeze > requirements.txt
