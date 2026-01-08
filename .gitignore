@@ -1,15 +1,11 @@
-.DS_Store
-Thumbs.db
-
+@"
 node_modules/
 .next/
 out/
 *.log
 
 .env
-.env.local
-.env.*.local
-
+.env.*
 *.db
 *.db-journal
 
@@ -17,8 +13,7 @@ out/
 venv/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
 .vscode/
 .idea/
+"@ | Out-File -Encoding utf8 .gitignore

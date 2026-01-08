@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Bead {
+  id        Int      @id @default(autoincrement())
+  colorCode String   @unique
+  name      String?
+  quantity  Int      @default(0)
+  threshold Int      @default(200)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  changes   StockChange[]
+}
+
+model StockChange {
+  id        Int      @id @default(autoincrement())
+  beadId    Int
+  delta     Int      // +补货，-消耗
+  note      String?
+  createdAt DateTime @default(now())
+
+  bead      Bead     @relation(fields: [beadId], references: [id])
+}

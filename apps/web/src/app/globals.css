@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap");
+
+:root{
+  --bgA:#fff0f7;
+  --bgB:#eef7ff;
+
+  --ink:#1f2937;
+  --muted:#6b7280;
+
+  --card:#ffffffcc;
+  --cardSolid:#ffffff;
+
+  --pink:#ff4fa3;
+  --pink2:#ff86c4;
+  --sky:#58b8ff;
+  --mint:#35e0b0;
+  --sun:#ffd665;
+  --grape:#9b7cff;
+
+  --line:rgba(255,79,163,.22);
+  --line2:rgba(88,184,255,.18);
+
+  --r-xl:28px;
+  --r-lg:22px;
+  --r-md:16px;
+
+  --shadow: 0 14px 34px rgba(31,41,55,.12);
+  --shadow2: 0 10px 22px rgba(31,41,55,.10);
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+  margin:0;
+  color:var(--ink);
+  font-family: "Fredoka", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:
+    radial-gradient(1200px 700px at 10% 5%, rgba(88,184,255,.18), transparent 60%),
+    radial-gradient(1200px 700px at 90% 0%, rgba(255,79,163,.16), transparent 55%),
+    linear-gradient(180deg, #fff, #fff);
+}
+
+/* 软软的彩色“气泡团”背景 */
+.k-blob {
+  position: fixed;
+  inset: -40px;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(320px 240px at 14% 20%, rgba(255,134,196,.35), transparent 62%),
+    radial-gradient(360px 280px at 86% 18%, rgba(88,184,255,.28), transparent 62%),
+    radial-gradient(420px 300px at 20% 86%, rgba(53,224,176,.20), transparent 64%),
+    radial-gradient(360px 260px at 86% 84%, rgba(255,214,101,.22), transparent 62%);
+  filter: blur(2px);
+}
+
+/* 漂浮爱心/星星“糖纸点点” */
+.k-sparkles{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .9;
+  background-image:
+    radial-gradient(circle at 18px 18px, rgba(255,79,163,.20) 2px, transparent 2px),
+    radial-gradient(circle at 58px 46px, rgba(88,184,255,.18) 2px, transparent 2px),
+    radial-gradient(circle at 42px 70px, rgba(53,224,176,.18) 2px, transparent 2px),
+    radial-gradient(circle at 78px 24px, rgba(255,214,101,.20) 2px, transparent 2px);
+  background-size: 92px 92px;
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 86%);
+}
+
+.k-app{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 14px 52px;
+}
+
+.k-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+
+  padding: 14px 14px;
+  border-radius: var(--r-xl);
+  background: var(--card);
+  border: 1px solid rgba(255,79,163,.20);
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(10px);
+}
+
+.k-brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.k-mascot{
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  background: linear-gradient(135deg, rgba(255,134,196,.26), rgba(88,184,255,.20));
+  border: 1px solid rgba(88,184,255,.25);
+  box-shadow: 0 12px 20px rgba(255,79,163,.10);
+  position: relative;
+}
+.k-mascot::after{
+  content:"✦";
+  position:absolute;
+  right:-6px;
+  top:-8px;
+  font-size: 16px;
+  color: rgba(255,214,101,.95);
+  transform: rotate(12deg);
+  filter: drop-shadow(0 6px 10px rgba(255,214,101,.18));
+}
+.k-title{
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1.05;
+}
+.k-subtitle{
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* 导航：更“贴纸按钮” */
+.k-nav{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+.k-link{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(88,184,255,.22);
+  background: linear-gradient(180deg, #fff, #ffffffb5);
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 0 10px 18px rgba(31,41,55,.06);
+  transition: transform .08s ease, box-shadow .12s ease;
+  display:flex;
+  align-items:center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.k-link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 26px rgba(31,41,55,.10);
+}
+.k-link:active{ transform: translateY(0); }
+
+/* 主卡片容器 */
+main{
+  background: var(--card);
+  border: 1px solid rgba(255,79,163,.20);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* 统一按钮/输入的“软糯感” */
+button{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,79,163,.18);
+  background: linear-gradient(135deg, rgba(255,134,196,.35), rgba(88,184,255,.18));
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 12px 22px rgba(31,41,55,.08);
+  transition: transform .08s ease, box-shadow .12s ease, filter .12s ease;
+  font-weight: 800;
+}
+button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 30px rgba(31,41,55,.12);
+  filter: saturate(1.05);
+}
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+input, textarea{
+  border: 1px solid rgba(255,79,163,.18);
+  border-radius: 16px;
+  padding: 10px 12px;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 10px 18px rgba(31,41,55,.04);
+  font-weight: 600;
+}
+input:focus, textarea:focus{
+  border-color: rgba(88,184,255,.55);
+  box-shadow: 0 0 0 5px rgba(88,184,255,.16);
+}
+
+hr{
+  border: none;
+  border-top: 1px dashed rgba(255,79,163,.22);
+  margin: 14px 0;
+}
+
+/* 小徽章：可爱状态标签 */
+.k-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(88,184,255,.22);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 16px rgba(31,41,55,.06);
+}
+.k-badge.ok{ border-color: rgba(53,224,176,.30); }
+.k-badge.low{ border-color: rgba(255,214,101,.55); }
+.k-badge.bad{ border-color: rgba(255,79,163,.40); }
+
+/* 页脚 */
+.k-footer{
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align:center;
+  opacity:.9;
+}
