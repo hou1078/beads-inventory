@@ -67,6 +67,22 @@ export default function Home() {
     }
   };
 
+  const removeBead = async (id: number) => {
+    setErr("");
+    try {
+      const ok = confirm("Delete this bead color? (will remove its history too)");
+      if (!ok) return;
+
+      const res = await fetch(`/api/beads/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error(await res.text());
+
+      await refresh();
+    } catch (e: any) {
+      setErr(e?.message ?? String(e));
+    }
+  };
+
+
   useEffect(() => {
     refresh();
   }, []);
@@ -119,6 +135,13 @@ export default function Home() {
                   <button onClick={() => changeQty(b.id, -50)} style={btnStyle}>-50</button>
                   <button onClick={() => changeQty(b.id, +50)} style={btnStyle}>+50</button>
                   <button onClick={() => changeQty(b.id, +200)} style={btnStyle}>+200</button>
+                  <button
+                    onClick={() => removeBead(b.id)}
+                    style={{ ...btnStyle, borderColor: "#f3b2b2" }}
+                    title="Delete this color"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
